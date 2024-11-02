@@ -91,4 +91,63 @@ void deletevil (map<string, vil>& villagers) {
     cout << name << " is deleted.\n";
 }
 
-void increase_friend (map<string, vil>& villagers);
+void increase_friend (map<string, vil>& villagers){
+    string name;
+    cout << "Which villager do you want to increase friendship: ";
+    cin >> name;
+    
+    auto it = villagers.find(name);
+    if (it != villagers.end()) {
+        int& level = it->second;
+        if (level < 10) {
+            level++;
+            cout << "Increased friendship level for " << name << ".\n";
+        } else {
+                cout << name << "'s friendship level is already 10.\n";
+            }
+        } else {
+            cout<<"can't find "<<name<<endl;
+        }
+}
+
+void decrease_friend (map<string, vil>& villagers){
+    string name;
+    cout << "Which villager do you want to decrease friendship: ";
+    cin >> name;
+    
+    auto it = villagers.find(name);
+    if (it != villagers.end()) {
+        int& level = it->second;
+        if (level > 0) {
+            level--;
+            cout << "Decreased friendship level for " << name << ".\n";
+        } else {
+                cout << name << "'s friendship level is already 0.\n";
+            }
+        } else {
+            cout<<"can't find "<<name<<endl;
+        }
+}
+
+void searchvil (const map<string, vil>& villagers){
+    string name;
+    cout << "Which villager do you want to search: ";
+    cin >> name;
+    
+    int level;
+    string species, catchphrase;
+
+    auto it = villagers.find(name);
+    if (it != villagers.end()) {
+        cout<<"Found "<<name<<endl;
+        tie(level, species, catchphrase) = it->second;
+        cout << name << " [" << level << ", " << species << ", " << catchphrase << "]\n";
+        } else {
+            cout<<"can't find "<<name<<endl;
+        }
+}
+
+void display (const map<string, vil>& villagers){
+    cout << "Villager details:\n";
+    
+}
